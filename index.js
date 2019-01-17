@@ -4,21 +4,9 @@ const express = require('express');
 const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const pg = require('pg');
+const db = require('./db');
 var sha256 = require('js-sha256');
-
-// Initialise postgres client
-const configs = {
-    user: 'ronniechua',
-    host: '127.0.0.1',
-    database: 'tunr_db',
-    port: 5432,
-};
-
-const pool = new pg.Pool(configs);
-
-pool.on('error', function(err) {
-    console.log('idle client error', err.message, err.stack);
-});
+var books = require('google-books-search');
 
 /**
  * ===================================
@@ -53,18 +41,8 @@ app.engine('jsx', reactEngine);
  * ===================================
  */
 
-// Import routes to match incoming requests
-require('./routes')(app, db);
+ require('./routes')(app, db);
 
-// Root GET request (it doesn't belong in any controller file)
-app.get('/', (request, response) => {
-  response.render('home');
-});
-
-// Catch all unmatched requests and return 404 not found page
-app.get('*', (request, response) => {
-  response.render('notfound');
-});
 
 /**
  * ===================================

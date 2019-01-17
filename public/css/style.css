@@ -1,0 +1,38 @@
+body{
+	background-color: orange;
+	color: white;
+	text-align: center;
+}
+
+#textbox{
+	height : 50px;
+	word-break: break-word;
+  width: 200px;
+  margin-top: 10px;
+
+}
+
+a{
+	color: #1dcaff;
+}
+
+img{
+height: 250px;
+width: 200px;
+	}
+
+	li{
+		margin: 10px 0px;
+	}
+
+	footer{
+		color: #1dcaff;
+	}
+
+	footer a{
+		color: #1dcaff;
+	}
+
+	.nav-link{
+		color: #1dcaff;
+	}
