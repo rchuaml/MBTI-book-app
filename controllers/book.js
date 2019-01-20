@@ -1,6 +1,7 @@
 const sha256 = require('js-sha256');
 var books = require('google-books-search');
 var util = require('util');
+var Promise = require('promise');
 
 var options = {
     // key: "YOUR API KEY",
@@ -145,25 +146,51 @@ module.exports = (db) => {
         }
     };
 
-    let addBook = (request,response) =>{
+    let addBook = (request, response) => {
         var inspected = JSON.parse(request.body.isbn);
         // console.log(inspected);
-        if(inspected.industryIdentifiers !== undefined){
-        var isbnNumber = inspected.industryIdentifiers[0].identifier;
-    }else{
-        response.send('Error: ISBN Code not available! Book is not available to be added to be added to your library! <a href = "/book">try again</a> and select another book');
-    }
+        if (inspected.industryIdentifiers !== undefined) {
+            var isbnNumber = inspected.industryIdentifiers[0].identifier;
+        } else {
+            response.send('Error: ISBN Code not available! Book is not available to be added to be added to your library! <a href = "/book">try again</a> and select another book');
+        }
         var username = request.cookies.username;
-        db.book.addBook(username,isbnNumber, (error,result)=>{
-        });
+        db.book.addBook(username, isbnNumber, (error, result) => {});
         response.redirect('/book');
     };
 
-    let getProfile = (request,response) =>{
+    let getProfile = (request, response) => {
         var id = request.cookies.userId;
-        db.book.getISBN = (id, (error, result)=>{
-            console.log(result.rows[0]);
+        db.book.getISBN(id, (error, result) => {
+            console.log(result.rows);
+
+            var newoptions = {
+                // key: "YOUR API KEY",
+                field: 'isbn',
+                offset: 0,
+                limit: 40,
+                type: 'books',
+                order: 'newest',
+                lang: 'en'
+            };
+            //how to push the array only after array has been pushed
+            var promises = [];
+            for (var i = 0; i < result.rows.length; i++) {
+                books.search(result.rows[i].isbn, newoptions, function(error, results, apiResponse) {
+                    if (!error) {
+                        const promise = results[0];
+                        promises.push(promise);
+                    } else {
+                        console.log(error);
+                    }
+                    // response.render('booklist', { list: searchresults });
+                });
+            }
+            Promise.all(promises).then(results => {
+                console.log("promises", results);
+            });
         });
+
     };
 
 

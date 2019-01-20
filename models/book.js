@@ -66,7 +66,6 @@ module.exports = (db) => {
         let queryString = `SELECT isbn FROM book WHERE owner_id = ${id}`;
         db.query(queryString, (err,queryResult)=>{
             callback(err, queryResult);
-            console.log(queryResult);
         });
     };
 
