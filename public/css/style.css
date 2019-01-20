@@ -1,7 +1,47 @@
 body{
-	background-color: orange;
+background: #FFB75E;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #ED8F03, #FFB75E);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #ED8F03, #FFB75E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+font-family: 'Candal', sans-serif;
 	color: white;
 	text-align: center;
+
+}
+
+h1{
+font-family: 'Bungee Shade', cursive;
+font-size: 35px;
+}
+
+
+
+hr {
+    background-color: white !important;
+    color: dimgrey !important;
+    border: solid 2px white !important;
+    height: 1px !important;
+}
+
+.modal-header{
+	border-bottom: solid 4.5px white !important;
+background: #FFB75E;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #ED8F03, #FFB75E);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #ED8F03, #FFB75E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+	color:black;
+}
+
+.modal-body{
+background: #200122;  /* fallback for old browsers */
+background: #FFB75E;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #ED8F03, #FFB75E);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #ED8F03, #FFB75E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.modal-title{
+	margin:0 0 0 50%;
 }
 
 #textbox{
@@ -10,10 +50,6 @@ body{
   width: 200px;
   margin-top: 10px;
 
-}
-
-a{
-	color: #1dcaff;
 }
 
 img{
@@ -26,13 +62,15 @@ width: 200px;
 	}
 
 	footer{
-		color: #1dcaff;
+		color: white;
 	}
 
 	footer a{
-		color: #1dcaff;
+		color: blue;
 	}
 
 	.nav-link{
-		color: #1dcaff;
+		color: white;
+		font-size:  25px;
+		font-family: 'Bungee Inline', cursive;
 	}

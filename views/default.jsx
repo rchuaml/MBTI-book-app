@@ -6,6 +6,8 @@ class DefaultLayout extends React.Component {
     return (
       <html>
         <head>
+<link href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan|Bungee+Inline|Bungee+Shade|Candal|Faster+One|Fredericka+the+Great" rel="stylesheet"/>
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossOrigin="anonymous" />
         <link rel="stylesheet" type="text/css" href="/css/style.css" />
         <title>Recipe List</title>
@@ -17,26 +19,27 @@ class DefaultLayout extends React.Component {
         <nav>
             <ul className="navbar relative-top">
               <li className="nav-item">
-                <a className="nav-link text-info" href="/artist">Home</a>
+                <a className="nav-link" href="/book">Home</a>
+              </li>
+                <li className="nav-item">
+                <a className="nav-link" href="/user/profile">Profile</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-info" href="/artist/new">Create New Artist</a>
+                <a className="nav-link" href="/user/signup">Sign Up</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-info" href="#">Songs</a>
+                <a className="nav-link" href="/user/login">Login</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-info" href="#">Contact</a>
+                <a className="nav-link" href="/user/logout">Logout</a>
               </li>
 
             </ul>
         </nav>
             <div className="container mx-auto my-auto">
-              <div className="row">
-                <div className="col-12">
+
                   {this.props.children}
-                </div>
-              </div>
+
             </div>
         <footer className="navbar">
             Copyright 2019 <span> </span>

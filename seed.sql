@@ -1,1 +1,3 @@
-INSERT INTO users (name,username,password) VALUES('Ronnie', 'ronnie', 'ronnie123');
+INSERT INTO users (name,username,password,personality,photo_url) VALUES('Ronnie Coleman', 'ronnie', '078bd6c933d8ae509259217390ac9c6e9f664b981c040c9630271a151e02e3bb', 'INTP', 'https://www.bodybuilding.com/images/2016/october/ronnie-coleman-fitness-360-return-of-ronnie-header-960x540.jpg');
+INSERT INTO users (name,username,password,personality,photo_url) VALUES('Ishak', 'ishak', 'fc58e4e23c3e798f48a5e2797939330eed467eb373a66d44be241a463bfa9d8c', 'ISTP', 'https://images.unsplash.com/44/MIbCzcvxQdahamZSNQ26_12082014-IMG_3526.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80');
+INSERT INTO users (name,username,password,personality,photo_url) VALUES('seany', 'seany', 'c4f962950576f0b1dc8d4f7a7e7a61bb0709e937bdebdcf5aad9a194a2844070', 'ISFJ', 'https://media0.giphy.com/media/EKUvB9uFnm2Xe/giphy.gif');
