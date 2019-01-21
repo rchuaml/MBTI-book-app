@@ -10,5 +10,8 @@
 		CREATE TABLE IF NOT EXISTS book (
   id SERIAL PRIMARY KEY,
   owner_id INTEGER,
-  isbn TEXT
+  title TEXT,
+  description TEXT,
+  thumbnail TEXT,
+  progress INTEGER DEFAULT 0
 );

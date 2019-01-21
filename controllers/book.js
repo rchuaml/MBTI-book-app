@@ -137,7 +137,7 @@ module.exports = (db) => {
                     } else {
                         console.log(error);
                     }
-                    response.render('booklist', { list: searchresults });
+                    response.render('booklist', { list: searchresults, person: personality });
                 });
             });
 
@@ -147,52 +147,29 @@ module.exports = (db) => {
     };
 
     let addBook = (request, response) => {
+        console.log(request.body);
         var inspected = JSON.parse(request.body.isbn);
-        // console.log(inspected);
-        if (inspected.industryIdentifiers !== undefined) {
-            var isbnNumber = inspected.industryIdentifiers[0].identifier;
-        } else {
-            response.send('Error: ISBN Code not available! Book is not available to be added to be added to your library! <a href = "/book">try again</a> and select another book');
-        }
         var username = request.cookies.username;
-        db.book.addBook(username, isbnNumber, (error, result) => {});
-        response.redirect('/book');
+        db.book.addBook(response, username, inspected, (error, result) => {});
     };
 
     let getProfile = (request, response) => {
-        var id = request.cookies.userId;
-        db.book.getISBN(id, (error, result) => {
-            console.log(result.rows);
-
-            var newoptions = {
-                // key: "YOUR API KEY",
-                field: 'isbn',
-                offset: 0,
-                limit: 40,
-                type: 'books',
-                order: 'newest',
-                lang: 'en'
-            };
-            //how to push the array only after array has been pushed
-            var promises = [];
-            for (var i = 0; i < result.rows.length; i++) {
-                books.search(result.rows[i].isbn, newoptions, function(error, results, apiResponse) {
-                    if (!error) {
-                        const promise = results[0];
-                        promises.push(promise);
-                    } else {
-                        console.log(error);
-                    }
-                    // response.render('booklist', { list: searchresults });
-                });
-            }
-            Promise.all(promises).then(results => {
-                console.log("promises", results);
-            });
-        });
-
+        db.book.getProfile(request, response, (error, result) => {});
     };
 
+    let editProfile = (request, response) => {
+        console.log(request.body);
+        parsedObject = JSON.parse(request.body.list);
+        percentage = parseInt(request.body.percent);
+        db.book.editProfile(request, response, parsedObject, percentage, (error, result) => {});
+    };
+
+    let deleteProfile = (request, response) =>{
+        parsedInfo = JSON.parse(request.body.info);
+                // console.log(parsedInfo);
+        db.book.deleteProfile(response, parsedInfo, (error,result) => {
+        });
+    };
 
 
 
@@ -209,7 +186,9 @@ module.exports = (db) => {
         signUp,
         signUpCreate,
         addBook,
-        getProfile
+        getProfile,
+        editProfile,
+        deleteProfile
     };
 
 };

@@ -14,7 +14,7 @@ return <li>
     return (
         <DefaultLayout>
       <html>
-        <head />
+        <head/>
         <body>
         <h1> These are the list of Artists</h1>
         <h4>Click on the name to see artist info or delete</h4>

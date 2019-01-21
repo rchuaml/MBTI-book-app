@@ -14,6 +14,15 @@ font-family: 'Bungee Shade', cursive;
 font-size: 35px;
 }
 
+h5{
+	font-family: arial;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.15); /* IE 9 */
+  -webkit-transform: scale(1.15); /* Safari 3-8 */
+  transform: scale(1.15);
+}
 
 
 hr {
@@ -73,4 +82,8 @@ width: 200px;
 		color: white;
 		font-size:  25px;
 		font-family: 'Bungee Inline', cursive;
+	}
+
+	.indexNo{
+		text-align: left;
 	}

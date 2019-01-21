@@ -18,4 +18,7 @@ module.exports = (app, db) => {
     app.post('/book', book.addBook);
     // loads the users profile and library of books
     app.get('/user/profile', book.getProfile);
+    app.put('/user/profile/edit', book.editProfile);
+    app.delete('/user/profile/delete', book.deleteProfile);
+
 }
