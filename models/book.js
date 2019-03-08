@@ -55,9 +55,9 @@ module.exports = (db) => {
         let queryString = `SELECT id FROM users WHERE username ='${username}'`;
         db.query(queryString, (err, queryResult) => {
             let id = queryResult.rows[0].id;
-            let newString = `INSERT INTO book (owner_id,title,description,thumbnail) VALUES (${id},'${inspected.title}', '${inspected.description}', '${inspected.thumbnail}')`;
+            let newString = `INSERT INTO book (google_id,owner_id,title,description,thumbnail) VALUES ('${inspected.id}',${id},'${inspected.title}', '${inspected.description}', '${inspected.thumbnail}')`;
             db.query(newString, (err, queryResult) => {
-                response.redirect('/book');
+                response.redirect('/');
             });
         });
     };
@@ -65,35 +65,36 @@ module.exports = (db) => {
 
     let getProfile = (request, response, callback) => {
         let userId = request.cookies.userId;
-        let queryString = `SELECT * FROM book WHERE owner_id = '${userId}' ORDER BY id`;
+        let queryString = `SELECT * FROM book WHERE owner_id = '${userId}' ORDER by id`;
         db.query(queryString, (err, queryResult) => {
             console.log(queryResult.rows);
             response.render('library', { list: queryResult.rows });
         });
     };
 
-    let editProfile = (request, response, parsedObject, percentage, callback) =>{
+    let editProfile = (request, response, parsedObject, percentage, callback) => {
         // let queryString = `INSERT into book WHERE id = `
         console.log("inside edit profile", parsedObject.id);
         let queryString = `UPDATE book SET progress = ${percentage} WHERE id = ${parsedObject.id}`;
-        db.query(queryString,(err,queryResult)=>{
+        db.query(queryString, (err, queryResult) => {
             response.redirect('/user/profile');
         });
     };
 
     let deleteProfile = (response, parsedInfo, callback) => {
         let queryString = `DELETE from book WHERE id = ${parsedInfo.id}`;
-        db.query(queryString,(err,queryResult)=>{
+        db.query(queryString, (err, queryResult) => {
             response.redirect('/user/profile');
         });
     };
 
-    // let editPercent =(response, isbnNumber, editedNumber, callback) =>{
-    //     let queryString = `UPDATE book SET progress = ${editedNumber} WHERE isbn = '${isbnNumber}'`;
-    //     db.query(queryString, (err,queryResult) =>{
-    //         response.redirect('/user/profile');
-    //     });
-    // }
+    let getBook = (request,response, callback) =>{
+        let id = request.params.id;
+        let queryString = `SELECT * FROM book WHERE id = ${id}`;
+        db.query(queryString, (err,queryResult) =>{
+            response.render("bookView", {list : queryResult.rows});
+        });
+    };
 
     return {
         getAll,
@@ -103,6 +104,7 @@ module.exports = (db) => {
         addBook,
         getProfile,
         editProfile,
-        deleteProfile
+        deleteProfile,
+        getBook
     };
 };

@@ -10,7 +10,7 @@ class DefaultLayout extends React.Component {
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossOrigin="anonymous" />
         <link rel="stylesheet" type="text/css" href="/css/style.css" />
-        <title>Recipe List</title>
+        <title>MBTI book reccomendation app</title>
         </head>
         <header>
 
@@ -19,7 +19,7 @@ class DefaultLayout extends React.Component {
         <nav>
             <ul className="navbar relative-top">
               <li className="nav-item">
-                <a className="nav-link" href="/book">Home</a>
+                <a className="nav-link" href="/">Home</a>
               </li>
                 <li className="nav-item">
                 <a className="nav-link" href="/user/profile">Profile</a>

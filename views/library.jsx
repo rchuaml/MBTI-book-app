@@ -49,7 +49,7 @@ class Home extends React.Component {
 
             <div classname = "col-2">
 <div id = "textbox">
-<h6>{name.title}</h6>
+<a href={"https://books.google.com/books?id=" + name.google_id + "&printsec=frontcover/"}target="_blank"><h6>{name.title}</h6></a>
 </div>
 <img src = {name.thumbnail}data-toggle="modal" data-target={"#myModal"+ index} className = "zoom"/>
 <h1>{index + 1}</h1>

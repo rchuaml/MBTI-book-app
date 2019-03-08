@@ -56,7 +56,7 @@ module.exports = (db) => {
                         response.cookie('loggedin', 'true');
                         response.cookie('username', user_name);
                         response.cookie('userId', result.rows[0].id);
-                        response.redirect('/book')
+                        response.redirect('/')
                     } else {
                         response.render('loginform', { list: ['error'] });
 
@@ -71,7 +71,7 @@ module.exports = (db) => {
         response.clearCookie('loggedin');
         response.clearCookie('username');
         response.clearCookie('userId');
-        response.redirect('/book');
+        response.redirect('/');
     }
 
     let signUp = (request, response) => {
@@ -157,6 +157,11 @@ module.exports = (db) => {
         db.book.getProfile(request, response, (error, result) => {});
     };
 
+    let getBook = (request,response) => {
+        db.book.getBook(request,response, (error, result) => {
+        });
+    };
+
     let editProfile = (request, response) => {
         console.log(request.body);
         parsedObject = JSON.parse(request.body.list);
@@ -170,6 +175,8 @@ module.exports = (db) => {
         db.book.deleteProfile(response, parsedInfo, (error,result) => {
         });
     };
+
+
 
 
 
@@ -188,7 +195,8 @@ module.exports = (db) => {
         addBook,
         getProfile,
         editProfile,
-        deleteProfile
+        deleteProfile,
+        getBook
     };
 
 };

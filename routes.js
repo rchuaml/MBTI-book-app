@@ -12,6 +12,7 @@ module.exports = (app, db) => {
     app.post('/user/login', book.loginCheck);
     app.get('/user/logout', book.logOut);
     app.get('/book', book.home);
+    app.get('/book/:id', book.getBook);
     app.get('/user/signup', book.signUp);
     app.post('/user/signup', book.signUpCreate);
     //add a book to your library

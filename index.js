@@ -13,7 +13,6 @@ var books = require('google-books-search');
  * Configurations and set up
  * ===================================
  */
-
 // Init express app
 const app = express();
 
