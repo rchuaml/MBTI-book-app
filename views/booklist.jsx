@@ -27,7 +27,7 @@ class Home extends React.Component {
         <h6>Description:</h6>
         <hr/>
         <p>{name.description}</p>
-        <form className="spacer" action="/book" method="post">
+        <form className="spacer" action="/" method="post">
   <input type="hidden"name = "isbn" value= {JSON.stringify(name)} />
    <input className="submit" type="submit" value="Add to library" />
    </form>
