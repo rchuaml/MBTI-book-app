@@ -2,7 +2,7 @@
 
 ## Hosted on heroku
 
-https://mbti-book-app.herokuapp.com/book
+https://mbti-book-app.herokuapp.com/
 
 Sign up for an account to access features
 
